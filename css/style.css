@@ -1,0 +1,79 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Cam (Glass) Navbar efekti */
+.nav-glass {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-block-end: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animasyonlar */
+@keyframes float {
+  0%,
+  100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Scrollbar Özelleştirme */
+::-webkit-scrollbar {
+  inline-size: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eab308;
+  border-radius: 4px;
+}
+
+/* Buton Aktiflik Durumu */
+.filter-btn.active {
+  background-color: #eab308;
+  color: #0f172a;
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+  transform: scale(1.05);
+}
+
+/* Proje Kartı Hover Efekti */
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ❗ ÖNEMLİ: Tailwind 'hidden' class'ını ezme!
+   Aşağıdaki eski kural (display:none !important) breakpointleri bozuyordu.
+   Bu yüzden KULLANMIYORUZ. */
+
+/* Kendi gizleme helper'ın (İstersen JS’de bunu kullan) */
+.is-hidden {
+  display: none !important;
+}
+
+/* HERO slider */
+#hero-slider {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s ease;
+  transform: scale(1.02); /* hafif zoom iyi durur */
+  filter: brightness(0.9) contrast(1.05);
+}
+
+#hero-slider.is-fading {
+  opacity: 0;
+}

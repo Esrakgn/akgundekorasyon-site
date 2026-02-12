@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akgün Dekorasyon</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    darkbg: '#0f172a',
+                    darkbg_light: '#1e293b',
+                    brand: '#eab308',
+                    brand_glow: '#facc15',
+                },
+                fontFamily: {
+                    heading: ['Outfit', 'sans-serif'],
+                    sans: ['Inter', 'sans-serif'],
+                }
+            }
+        }
+    }
+    </script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+
+</head>
+
+<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-brand selection:text-darkbg overflow-x-hidden">
+
+    <!-- NAVBAR (Üst Menü - Kısayollar) -->
+    <nav class="nav-glass fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="max-w-7xl mx-auto px-0 sm:px-4 lg:px-6">
+
+            <div class="flex items-center justify-between h-24">
+               
+               
+<!-- Logo -->
+<div onclick="navigate('anasayfa')" 
+     class="flex items-center gap-3 cursor-pointer group -ml-50">
+
+    <img src="images/logo.jpg"
+     alt="Akgün Dekorasyon Logo"
+     class="h-[76px] w-[76px] object-cover rounded-full
+            border-2 border-brand
+            transition duration-300
+            group-hover:scale-110
+            shadow-[0_0_8px_rgba(234,179,8,0.2)]
+            group-hover:shadow-[0_0_14px_rgba(234,179,8,0.4)]>
+
+
+    <span class="font-heading font-bold text-2xl tracking-tight text-white 
+                 group-hover:text-brand transition-colors">
+        Akgün Dekorasyon
+    </span>
+
+</div>
+
+<!-- Masaüstü Menü (Kısayollar Burada) -->
+<div class="hidden sm:flex items-center gap-6">
+
+   <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
+</button>
+
+<button onclick="navigate('hizmetlerimiz')" class="text-gray-300 hover:text-brand font-medium transition-colors relative group py-2">
+    Hizmetlerimiz
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
+</button>
+
+<button onclick="navigate('projeler')" class="text-gray-300 hover:text-brand font-medium transition-colors relative group py-2">
+    Projelerimiz
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
+</button>
+
+<button onclick="navigate('hakkimizda')" class="text-gray-300 hover:text-brand font-medium transition-colors relative group py-2">
+    Hakkımızda
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
+
+<button onclick="navigate('iletisim')"
+  class="text-brand block px-3 py-3 rounded-lg hover:bg-gray-800 text-base font-medium w-full text-left">
+  İletişim
+</button>
+
+</button>
+
+</div>
+
+<!-- Mobil Menü Butonu (Telefonda görünür) -->
+<div class="-mr-2 flex sm:hidden">
+    <button onclick="toggleMenu()" type="button"
+        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+</div>
+</div>
+</div>
+
+<!-- Mobil Açılır Menü İçeriği -->
+<div id="mobile-menu"
+     class="hidden md:hidden bg-darkbg border-t border-gray-800 absolute w-full top-full left-0 z-40 shadow-xl">
+    <div class="px-4 pt-4 pb-6 space-y-2">
+        <button onclick="navigate('anasayfa')" class="text-white block px-3 py-3 rounded-lg hover:bg-gray-800 text-base font-medium w-full text-left">Ana Sayfa</button>
+        <button onclick="navigate('hizmetlerimiz')" class="text-gray-300 block px-3 py-3 rounded-lg hover:bg-gray-800 text-base font-medium w-full text-left">Hizmetlerimiz</button>
+        <button onclick="navigate('projeler')" class="text-gray-300 block px-3 py-3 rounded-lg hover:bg-gray-800 text-base font-medium w-full text-left">Projelerimiz</button>
+        <button onclick="navigate('iletisim')" class="text-brand block px-3 py-3 rounded-lg hover:bg-gray-800 text-base font-medium w-full text-left">İletişim</button>
+    </div>
+</div>
+</nav>
+
+
+
+    <!-- ANA GÖRÜNÜM (HOME VIEW) -->
+    <div id="home-view">
+        
+        <!-- Hero Section (Slider) -->
+        <section id="anasayfa" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+            
+            <!-- ✅ HERO SLIDER: 3 görsel üst üste (img ile) -->
+            <div id="hero-slider" class="absolute inset-0 z-0">
+                <img class="hero-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
+                     src="images/hero/1.jpg" alt="">
+                <img class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                     src="images/hero/2.jpg" alt="">
+                <img class="hero-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                     src="images/hero/3.jpg" alt="">
+            </div>
+
+            <!-- Modern Gradient Overlay (Daha derinlik katar) -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-darkbg z-10 pointer-events-none"></div>
+            
+            <!-- İçerik -->
+            <div class="relative z-30 px-4 max-w-5xl mx-auto mt-16 reveal active">
+                <h1 class="font-heading text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
+                    Hayallerinizi <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-yellow-200">Tasarlıyoruz</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-gray-200 mb-10 leading-relaxed font-light drop-shadow-lg max-w-3xl mx-auto opacity-90">
+                    Akgün Dekorasyon ile yaşam alanlarınıza modern dokunuşlar, konfor ve estetik katın.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center relative z-40">
+                    <button onclick="navigate('iletisim')" class="bg-brand text-darkbg font-bold text-lg py-4 px-10 rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(234,179,8,0.5)] animate-pulse hover:animate-none transform hover:scale-105">
+                        Hemen Teklif Al
+                    </button>
+                    <button onclick="navigate('projeler')" class="bg-white/10 border border-white/30 text-white font-bold text-lg py-4 px-10 rounded-full hover:bg-white hover:text-darkbg transition-all duration-300 backdrop-blur-sm">
+                        Projelerimizi İncele
+                    </button>
+                </div>
+            </div>
+
+            <!-- Alt Dalga Efekti -->
+            <div class="wave-divider" style="transform: rotate(0deg); inset-block-end: -1px;">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+<section id="hizmetlerimiz" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+
+    <div class="text-center mb-20 reveal">
+        <span class="text-brand font-bold tracking-[0.2em] uppercase text-sm">Neler Yapıyoruz?</span>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mt-3 mb-6">Hizmetlerimiz</h2>
+        <div class="w-24 h-1.5 bg-gradient-to-r from-brand to-transparent mx-auto rounded-full"></div>
+        <p class="text-gray-400 mt-6 max-w-2xl mx-auto text-lg font-light">
+            Kaliteli işçilik ve modern tasarımlarla yaşam alanlarınıza değer katıyoruz.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Boya -->
+        <div class="service-card bg-darkbg_light rounded-2xl overflow-hidden shadow-lg group border border-gray-700/50">
+            <div class="h-60 overflow-hidden relative">
+                <img src="images/services/boya.png"
+                     alt="Boya Badana"
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3">Boya Badana</h3>
+                <p class="text-gray-400 text-sm">
+                    İç ve dış mekan boyama işleri, dekoratif boya teknikleri ve profesyonel renk danışmanlığı.
+                </p>
+            </div>
+        </div>
+
+        <!-- Alçı -->
+        <div class="service-card bg-darkbg_light rounded-2xl overflow-hidden shadow-lg group border border-gray-700/50">
+            <div class="h-60 overflow-hidden relative">
+                <img src="images/services/alci.jpg" alt="Alçı & Sıva" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3">Alçı & Sıva İşleri</h3>
+                <p class="text-gray-400 text-sm">
+                    Alçıpan tavan, duvar bölme, dekoratif sıvalar ve stropiyer uygulamaları.
+                </p>
+            </div>
+        </div>
+
+        <!-- Fayans -->
+        <div class="service-card bg-darkbg_light rounded-2xl overflow-hidden shadow-lg group border border-gray-700/50">
+            <div class="h-60 overflow-hidden relative">
+                <img src="images/services/fayans.png"
+                     alt="Fayans & Seramik"
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3">Fayans & Seramik</h3>
+                <p class="text-gray-400 text-sm">
+                    Banyo, mutfak zemin ve duvar seramik kaplama, modern mozaik işçilikleri.
+                </p>
+            </div>
+        </div>
+
+        <!-- Dış Cephe -->
+        <div class="service-card bg-darkbg_light rounded-2xl overflow-hidden shadow-lg group border border-gray-700/50">
+            <div class="h-60 overflow-hidden relative">
+                <img src="images/services/discephe.png"
+                     alt="Dış Cephe"
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3">Dış Cephe</h3>
+                <p class="text-gray-400 text-sm">
+                    Mantolama, yalıtım çözümleri ve komple dış cephe uygulamaları.
+                </p>
+            </div>
+        </div>
+
+        <!-- Tadilat -->
+        <div class="service-card bg-darkbg_light rounded-2xl overflow-hidden shadow-lg group border border-gray-700/50">
+            <div class="h-60 overflow-hidden relative">
+                <img src="images/services/tadilat.jpg"
+                     alt="Tamirat & Tadilat"
+                     class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3">Tamirat & Tadilat</h3>
+                <p class="text-gray-400 text-sm">
+                    Mobilya montajı, tesisat onarımları ve genel ev yenileme hizmetleri.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+        <!-- About Section -->
+        <section id="hakkimizda" class="py-24 bg-gradient-to-b from-darkbg_light to-darkbg relative overflow-hidden">
+            <div class="absolute -top-12 left-0 w-full overflow-hidden leading-none rotate-180">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block h-12 w-full fill-darkbg">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-16 relative z-10">
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand to-yellow-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hakkımızda" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[500px]">
+                            <div class="absolute -bottom-6 -right-6 bg-brand text-darkbg p-6 rounded-xl shadow-xl animate-float">
+                                <span class="block text-4xl font-bold font-heading">15+</span>
+                                <span class="text-sm font-bold uppercase tracking-wider">Yıllık<br>Tecrübe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 reveal">
+                    <span class="text-brand font-bold tracking-widest uppercase text-sm">Biz Kimiz?</span>
+                    <h2 class="font-heading text-4xl font-bold text-white mt-2 mb-6 leading-tight">Mükemmelliği Sizin İçin <span class="text-brand">İnşa Ediyoruz</span></h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg font-light">
+                        Akgün Dekorasyon olarak 15 yılı aşkın süredir sektörde güven ve kaliteyi inşa ediyoruz. Müşteri memnuniyetini esas alan çalışma prensibimizle, yaşam alanlarınızı daha kullanışlı, estetik ve modern hale getiriyoruz.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-4 bg-darkbg p-4 rounded-xl border border-gray-700/50 hover:border-brand/50 transition duration-300">
+                            <div class="text-brand text-2xl"><i class="fas fa-clock"></i></div>
+                            <div><h4 class="font-bold text-white">Zamanında Teslim</h4></div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-darkbg p-4 rounded-xl border border-gray-700/50 hover:border-brand/50 transition duration-300">
+                            <div class="text-brand text-2xl"><i class="fas fa-medal"></i></div>
+                            <div><h4 class="font-bold text-white">Kalite Garantisi</h4></div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-darkbg p-4 rounded-xl border border-gray-700/50 hover:border-brand/50 transition duration-300">
+                            <div class="text-brand text-2xl"><i class="fas fa-wallet"></i></div>
+                            <div><h4 class="font-bold text-white">Uygun Fiyat</h4></div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-darkbg p-4 rounded-xl border border-gray-700/50 hover:border-brand/50 transition duration-300">
+                            <div class="text-brand text-2xl"><i class="fas fa-headset"></i></div>
+                            <div><h4 class="font-bold text-white">7/24 Destek</h4></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <div class="bg-gradient-to-r from-brand to-yellow-600 py-16 relative">
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-darkbg relative z-10">
+                <div class="group hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="text-5xl font-bold mb-2 font-heading">500+</div>
+                    <div class="font-semibold text-lg opacity-80 uppercase tracking-wide">Mutlu Müşteri</div>
+                </div>
+                <div class="group hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="text-5xl font-bold mb-2 font-heading">15+</div>
+                    <div class="font-semibold text-lg opacity-80 uppercase tracking-wide">Yıllık Tecrübe</div>
+                </div>
+                <div class="group hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="text-5xl font-bold mb-2 font-heading">850+</div>
+                    <div class="font-semibold text-lg opacity-80 uppercase tracking-wide">Proje</div>
+                </div>
+                <div class="group hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="text-5xl font-bold mb-2 font-heading">20</div>
+                    <div class="font-semibold text-lg opacity-80 uppercase tracking-wide">Uzman</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="iletisim" class="py-24 px-4 relative">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand font-bold tracking-widest uppercase text-sm">İletişim</span>
+                    <h2 class="font-heading text-4xl font-bold text-white mt-2">Bize Ulaşın</h2>
+                    <p class="text-gray-400 mt-4 text-lg">Projeleriniz için bir kahve eşliğinde konuşalım.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="card-glass p-10 rounded-3xl shadow-2xl flex flex-col justify-between h-full reveal">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-8 border-b border-gray-700 pb-4 font-heading">İletişim Bilgileri</h3>
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-5 group">
+                                    <div class="bg-darkbg border border-gray-700 p-4 rounded-xl text-brand group-hover:bg-brand group-hover:text-darkbg transition duration-300 shadow-md"><i class="fas fa-map-marker-alt text-xl"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-white text-lg">Adres</h4>
+                                        <p class="text-gray-400 text-sm">Kepez, Antalya</p>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-2xl overflow-hidden h-48 border border-gray-600 shadow-lg w-full grayscale hover:grayscale-0 transition duration-500">
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101995.42078888066!2d30.63532686737671!3d36.94276137666357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c3855a7e937399%3A0x1c67623f9502787c!2sKepez%2C%20Antalya!5e0!3m2!1str!2str!4v1709241234567!5m2!1str!2str" 
+                                        width="100%" 
+                                        height="100%" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+
+                                <div class="flex items-start gap-5 group">
+                                    <div class="bg-darkbg border border-gray-700 p-4 rounded-xl text-brand group-hover:bg-brand group-hover:text-darkbg transition duration-300 shadow-md"><i class="fas fa-phone text-xl"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-white text-lg">Telefon</h4>
+                                        <p class="text-gray-400 font-mono">+90 538 796 72 12</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-5 group">
+                                    <div class="bg-darkbg border border-gray-700 p-4 rounded-xl text-brand group-hover:bg-brand group-hover:text-darkbg transition duration-300 shadow-md"><i class="fas fa-envelope text-xl"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-white text-lg">E-posta</h4>
+                                        <p class="text-gray-400 text-sm">aakgundekorasyon@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10 pt-8 border-t border-gray-700">
+                            <a href="https://wa.me/905387967212" target="_blank" class="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 w-full hover:shadow-lg transform hover:-translate-y-1 group">
+                                <i class="fab fa-whatsapp text-3xl group-hover:animate-bounce"></i> 
+                                <span class="text-lg">WhatsApp ile Hızlı Mesaj</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-3xl shadow-2xl text-gray-800 h-fit border-t-8 border-brand reveal">
+                        <h3 class="text-3xl font-bold mb-8 text-gray-900 font-heading">Teklif Formu</h3>
+                        <form action="https://formsubmit.co/aakgundekorasyon@gmail.com" method="POST" class="space-y-6" onsubmit="return handleRateLimit(event)">
+                            <input type="hidden" name="_subject" value="Yeni Teklif Formu - Akgün Dekorasyon">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_next" value="http://akgundekorasyon.com/#iletisim">
+
+                            
+                            <div class="group relative">
+                                <label class="block text-sm font-bold mb-2 text-gray-500 group-focus-within:text-brand transition">Adınız Soyadınız</label>
+                                <input type="text" name="name" class="w-full px-4 py-4 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-brand focus:bg-white outline-none transition-all duration-300 font-medium" placeholder="Örn: Ahmet Yılmaz" required>
+                            </div>
+                            <div class="group relative">
+                                <label class="block text-sm font-bold mb-2 text-gray-500 group-focus-within:text-brand transition">Telefon Numaranız</label>
+                                <input type="tel" name="phone" class="w-full px-4 py-4 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-brand focus:bg-white outline-none transition-all duration-300 font-medium" placeholder="05XX XXX XX XX" required>
+                            </div>
+                            <div class="group relative">
+                                <label class="block text-sm font-bold mb-2 text-gray-500 group-focus-within:text-brand transition">Hizmet Türü</label>
+                                <select name="service" class="w-full px-4 py-4 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-brand focus:bg-white outline-none transition-all duration-300 font-medium appearance-none cursor-pointer">
+                                    <option>Genel Tadilat</option>
+                                    <option>Boya Badana</option>
+                                    <option>Fayans & Seramik</option>
+                                    <option>Alçı İşleri</option>
+                                    <option>Diğer</option>
+                                </select>
+                                <div class="absolute right-4 bottom-4 pointer-events-none text-gray-400"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="group relative">
+                                <label class="block text-sm font-bold mb-2 text-gray-500 group-focus-within:text-brand transition">Mesajınız</label>
+                                <textarea name="message" rows="4" class="w-full px-4 py-4 rounded-xl bg-gray-50 border-2 border-gray-100 focus:border-brand focus:bg-white outline-none transition-all duration-300 font-medium resize-none" placeholder="Projenizden kısaca bahsedin..." required></textarea>
+                            </div>
+
+                            <div class="flex items-start gap-3 mb-4">
+                                <input type="checkbox" id="kvkk-consent" required class="mt-1 w-4 h-4 text-brand bg-gray-100 border-gray-300 rounded focus:ring-brand cursor-pointer">
+                                <label for="kvkk-consent" class="text-sm text-gray-600 cursor-pointer">
+                                    Teklif talebi kapsamında kişisel verilerimin işlenmesine ilişkin <button type="button" onclick="openKvkk()" class="text-brand font-bold hover:underline">KVKK Aydınlatma Metni</button>’ni okudum.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="w-full bg-darkbg text-white font-bold text-lg py-5 rounded-xl hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] shadow-lg flex justify-center items-center gap-2 group">
+                                <span>Teklifi Gönder</span>
+                                <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- KVKK Modal -->
+    <div id="kvkk-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white text-gray-800 rounded-3xl shadow-2xl max-w-3xl w-full max-h-[80vh] flex flex-col relative transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                <h3 class="text-2xl font-bold text-darkbg font-heading">KVKK Aydınlatma Metni</h3>
+                <button onclick="closeKvkk()" class="text-gray-500 hover:text-red-500 transition text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto leading-relaxed text-sm md:text-base">
+                <h4 class="font-bold text-lg mb-2 text-brand">Kişisel Verilerin Korunması Hakkında Aydınlatma Metni</h4>
+                <p class="mb-4 text-gray-600">Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında, veri sorumlusu sıfatıyla Akgün Dekorasyon tarafından hazırlanmıştır.</p>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">1. Veri Sorumlusu</h5>
+                <p class="mb-4 text-gray-600">Bu internet sitesi üzerinden toplanan kişisel veriler, Akgün Dekorasyon tarafından, KVKK’ya uygun olarak işlenmektedir.</p>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">2. İşlenen Kişisel Veriler</h5>
+                <p class="mb-2 text-gray-600">Teklif formu aracılığıyla aşağıdaki kişisel veriler işlenmektedir:</p>
+                <ul class="list-disc pl-5 mb-4 text-gray-600 marker:text-brand">
+                    <li>Ad – Soyad</li>
+                    <li>Telefon numarası</li>
+                </ul>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">3. Kişisel Verilerin İşlenme Amacı</h5>
+                <p class="mb-2 text-gray-600">Toplanan kişisel verileriniz;</p>
+                <ul class="list-disc pl-5 mb-4 text-gray-600 marker:text-brand">
+                    <li>Talep ettiğiniz dekorasyon hizmetlerine ilişkin teklif sunulması,</li>
+                    <li>Sizinle iletişime geçilmesi,</li>
+                    <li>Hizmet sürecinin yürütülmesi</li>
+                </ul>
+                <p class="mb-4 text-gray-600">amaçlarıyla sınırlı olarak işlenmektedir.</p>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">4. Hukuki Sebep</h5>
+                <p class="mb-4 text-gray-600">Kişisel verileriniz, KVKK’nın 5. maddesi uyarınca, “bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması” hukuki sebebine dayanılarak işlenmektedir.</p>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">5. Kişisel Verilerin Aktarılması</h5>
+                <p class="mb-4 text-gray-600">Kişisel verileriniz, teklif talebinizin tarafımıza iletilmesi amacıyla e-posta altyapısı ve form iletim hizmeti sağlayıcıları aracılığıyla işlenebilir; bu kapsam dışında üçüncü kişilerle pazarlama amacıyla paylaşılmaz.</p>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">6. Kişisel Verilerin Saklama Süresi</h5>
+                <p class="mb-4 text-gray-600">Kişisel verileriniz, teklif sürecinin tamamlanması ve yasal yükümlülüklerin yerine getirilmesi için gerekli olan süre boyunca saklanmakta, bu sürenin sonunda silinmekte veya imha edilmektedir.</p>
+                <h5 class="font-bold mt-6 mb-2 text-darkbg">7. KVKK Kapsamındaki Haklarınız</h5>
+                <p class="mb-2 text-gray-600">KVKK’nın 11. maddesi kapsamında;</p>
+                <ul class="list-disc pl-5 mb-4 text-gray-600 marker:text-brand">
+                    <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme,</li>
+                    <li>İşlenmişse buna ilişkin bilgi talep etme,</li>
+                    <li>Amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+                    <li>Eksik veya yanlış işlenmişse düzeltilmesini isteme,</li>
+                    <li>Kanuna aykırı olarak işlenmişse silinmesini talep etme</li>
+                </ul>
+                <p class="mb-4 text-gray-600">haklarına sahipsiniz. Bu haklarınızı kullanmak için bizimle <a href="mailto:aakgundekorasyon@gmail.com" class="text-brand font-bold hover:underline">aakgundekorasyon@gmail.com</a> adresi üzerinden iletişime geçebilirsiniz.</p>
+            </div>
+            <div class="p-6 border-t border-gray-200 bg-gray-50 rounded-b-3xl flex justify-end">
+                <button onclick="closeKvkk()" class="bg-darkbg text-white px-8 py-3 rounded-xl hover:bg-gray-800 transition shadow-lg">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJELER GÖRÜNÜMÜ (PROJECTS VIEW) -->
+    <div id="projects-view" class="hidden pt-28 pb-20">
+        <div class="py-12 text-center px-4 relative">
+             <div class="absolute inset-0 bg-brand/5 blur-3xl -z-10 transform -translate-y-1/2"></div>
+            <h1 class="font-heading text-4xl md:text-6xl font-bold text-white mb-6">Tamamlanan Projeler</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12 text-lg">Müşterilerimiz için hayata geçirdiğimiz özel yaşam alanlarından seçkiler.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="filterProjects('all')" class="filter-btn active bg-brand text-darkbg px-8 py-3 rounded-full font-bold transition-all hover:scale-105 shadow-glow" data-filter="all">Tümü</button>
+                <button onclick="filterProjects('ic-mekan')" class="filter-btn bg-gray-800 border border-gray-700 text-white px-8 py-3 rounded-full font-bold transition-all hover:border-brand hover:text-brand" data-filter="ic-mekan">İç Mekan</button>
+                <button onclick="filterProjects('boya')" class="filter-btn bg-gray-800 border border-gray-700 text-white px-8 py-3 rounded-full font-bold transition-all hover:border-brand hover:text-brand" data-filter="boya">Boya Badana</button>
+                <button onclick="filterProjects('fayans')" class="filter-btn bg-gray-800 border border-gray-700 text-white px-8 py-3 rounded-full font-bold transition-all hover:border-brand hover:text-brand" data-filter="fayans">Fayans & Seramik</button>
+                <button onclick="filterProjects('dis-cephe')" class="filter-btn bg-gray-800 border border-gray-700 text-white px-8 py-3 rounded-full font-bold transition-all hover:border-brand hover:text-brand" data-filter="dis-cephe">Dış Cephe</button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projeler JS ile yüklenecek -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJE DETAY GÖRÜNÜMÜ -->
+    <div id="project-detail-view" class="hidden pt-32 pb-20 bg-darkbg min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="closeProjectDetail()" class="mb-8 flex items-center text-brand hover:text-white transition gap-3 font-bold group">
+                <div class="w-10 h-10 rounded-full border border-brand/30 flex items-center justify-center group-hover:bg-brand group-hover:text-darkbg transition">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                Projelere Dön
+            </button>
+
+            <div class="mb-12 p-8 rounded-3xl bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm">
+                <span id="detail-category" class="text-sm font-bold text-brand uppercase tracking-wider bg-brand/10 px-4 py-2 rounded-lg inline-block mb-4">Kategori</span>
+                <h1 id="detail-title" class="font-heading text-3xl md:text-5xl font-bold text-white mb-6">Proje Başlığı</h1>
+                <p id="detail-description" class="text-gray-300 max-w-4xl leading-relaxed text-lg font-light">Proje açıklaması buraya gelecek.</p>
+            </div>
+
+            <div id="detail-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Fotoğraflar JS ile buraya eklenecek -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-gray-400 text-sm text-center md:text-left flex flex-col md:flex-row gap-2 md:gap-6 items-center">
+                <span>&copy; 2026 Akgün Dekorasyon. Tüm hakları saklıdır.</span>
+                <span class="hidden md:block w-1.5 h-1.5 bg-gray-700 rounded-full"></span> 
+                <span class="text-brand font-medium">Made By Esra Akgün</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-brand hover:text-darkbg transition duration-300 group"><i class="fab fa-instagram text-lg group-hover:scale-110 transition"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-brand hover:text-darkbg transition duration-300 group"><i class="fab fa-facebook text-lg group-hover:scale-110 transition"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-brand hover:text-darkbg transition duration-300 group"><i class="fab fa-twitter text-lg group-hover:scale-110 transition"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modern Bildirim Kutusu (Toast Notification) -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-[100] transform transition-all duration-500 translate-y-32 opacity-0">
+        <div class="bg-white border-l-4 border-green-500 shadow-2xl rounded-r-lg p-5 flex items-start gap-4 max-w-md backdrop-blur-sm bg-white/95">
+            <div class="text-green-500 mt-1">
+                <i class="fas fa-check-circle text-2xl"></i>
+            </div>
+            <div class="flex-1">
+                <h4 id="toast-title" class="font-bold text-gray-800 text-base">İşlem Başlatıldı</h4>
+                <p id="toast-message" class="text-sm text-gray-600 mt-1 leading-relaxed">İşlem sonucu buraya gelecek.</p>
+            </div>
+            <button onclick="closeToast()" class="text-gray-400 hover:text-gray-600 transition">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Ana JS Dosyası -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
